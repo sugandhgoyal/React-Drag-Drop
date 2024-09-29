@@ -110,7 +110,7 @@ const App = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       saveChanges();
-    }, 10000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [documents, hasChanges]);
@@ -121,7 +121,10 @@ const App = () => {
       setLastSavedTime((prevTime) => prevTime + 1);
     }, 1000);
 
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+      setLastSavedTime(0);
+    };
   }, []);
 
   useEffect(() => {
@@ -131,7 +134,8 @@ const App = () => {
   return (
     <div>
       <h1>Documents</h1>
-      {isSaving && <div className="saving-spinner">Saving...</div>}
+      {isSaving ||
+        (hasChanges && <div className="saving-spinner"><p>saving....</p></div>)}
       <p>Last saved {lastSavedTime} seconds ago</p>
 
       {/* DragDropContext to handle the drag-and-drop events */}

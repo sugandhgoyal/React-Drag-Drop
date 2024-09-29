@@ -1,0 +1,15 @@
+version: "3"
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mockapi
+
+  mockapi:
+    build:
+      context: ./mockapi
+    ports:
+      - "4000:4000"
