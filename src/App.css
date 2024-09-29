@@ -36,3 +36,59 @@
     transform: rotate(360deg);
   }
 }
+
+.App {
+  text-align: center;
+}
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 16px;
+  cursor: pointer;
+  width: 200px;
+  text-align: center;
+}
+
+.card img {
+  max-width: 100%;
+}
+
+.thumbnail {
+  position: relative;
+}
+
+.spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 2px solid #000;
+}
