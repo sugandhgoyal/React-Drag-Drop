@@ -18,27 +18,30 @@ const CardGrid = ({ documents, openModal, loading, setLoading }) => {
 
   return (
     <div className="card-grid">
-      {documents.map((doc, index) => (
-        <Draggable key={doc.type} draggableId={doc.type} index={index}>
-          {(provided) => (
-            <div
-              ref={provided.innerRef}
-              {...provided.draggableProps}
-              {...provided.dragHandleProps}
-              className="card"
-              onClick={() => openModal(getThumbnail(doc.type))}
-            >
-              <Spinner
-                src={getThumbnail(doc.type)}
-                alt={doc.title}
-                loading={loading}
-                setLoading={setLoading}
-              />
-              <h3>{doc.title}</h3>
-            </div>
-          )}
-        </Draggable>
-      ))}
+      {documents.map(
+        (doc, index) =>
+          doc && (
+            <Draggable key={doc.type} draggableId={doc.type} index={index}>
+              {(provided) => (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.draggableProps}
+                  {...provided.dragHandleProps}
+                  className="card"
+                  onClick={() => openModal(getThumbnail(doc.type))}
+                >
+                  <Spinner
+                    src={getThumbnail(doc.type)}
+                    alt={doc.title}
+                    loading={loading}
+                    setLoading={setLoading}
+                  />
+                  <h3>{doc.title}</h3>
+                </div>
+              )}
+            </Draggable>
+          )
+      )}
     </div>
   );
 };
