@@ -2,8 +2,20 @@ import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import Spinner from "../Spinner/Spinner";
 
-const CardGrid = ({ documents, openModal, loading, setLoading }) => {
-  const getThumbnail = (type) => {
+interface Document {
+  type: string;
+  title: string;
+}
+
+interface CardGridProps {
+  documents: Document[];
+  openModal: (thumbnail: string) => void;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
+}
+
+const CardGrid: React.FC<CardGridProps> = ({ documents, openModal, loading, setLoading }) => {
+  const getThumbnail = (type: string): string => {
     switch (type) {
       case "bank-draft":
         return "/images/bill.jpg";
